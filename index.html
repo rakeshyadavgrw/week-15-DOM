@@ -1,0 +1,380 @@
+<!-- **************************Question-1********************** -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Profile Picture</title>
+  </head>
+  <body>
+    <h1>Update Profile Picture</h1>
+    <input id="file-picker" type="file" onchange="changeProfile()" />
+    <h3>Your Profile Pictiure</h3>
+    <img id="image" src="" alt="No Profile Picture" />
+
+    <script>
+      const filePicker = document.getElementById("file-picker");
+      const image = document.getElementById("image");
+
+      function changeProfile() {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          image.src = e.target.result;
+        };
+
+        reader.readAsDataURL(filePicker.files[0]);
+      }
+    </script>
+  </body>
+</html>
+
+<!-- **************************Question-2********************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theme</title>
+  </head>
+  <body>
+    <h1 id="text">This is Light Mode</h1>
+    <button onclick="toggle()">Toggle Theme</button>
+    <script>
+      const text = document.getElementById("text");
+
+      function toggle() {
+        const color = document.body.style.backgroundColor;
+        if (color === "black") {
+          document.body.style.backgroundColor = "white";
+          text.innerHTML = "This is Light Mode";
+          text.style.color = "black";
+        } else {
+          document.body.style.backgroundColor = "black";
+          text.innerHTML = "This is Dark Mode";
+          text.style.color = "white";
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!-- **************************Question-3********************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+  </head>
+  <body>
+    <h1>Counter</h1>
+    <h1>
+      <span> <button onclick="increment()">+</button></span>
+      <span id="count">0</span>
+      <span><button onclick="decrement()">-</button></span>
+    </h1>
+
+    <script>
+      const count = document.getElementById("count");
+
+      function increment() {
+        count.innerHTML = Number(count.innerHTML) + 1;
+      }
+
+      function decrement() {
+        if (Number(count.innerHTML) > 0) {
+          count.innerHTML = Number(count.innerHTML) - 1;
+        } else {
+          alert("Counter is going beyond 0.");
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!-- **************************Question-4********************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+
+      div {
+        margin: 10px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <form onsubmit="validateAndSubmit(event)">
+      <h1>Sign Up Form</h1>
+      <div>
+        <label for="name">Name: </label>
+        <input
+          type="text"
+          placeholder="( Minimum 3 characters )"
+          name="name"
+          id="name"
+        />
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input
+          type="email"
+          placeholder="Enter Your Email"
+          name="email"
+          id="email"
+        />
+      </div>
+      <div>
+        <label for="password">Password: </label>
+        <input
+          type="password"
+          placeholder="( Minimum 8 characters )"
+          id="password"
+        />
+      </div>
+      <button type="submit" id="submit">Submit</button>
+    </form>
+
+    <script>
+      function validateAndSubmit(event) {
+        event.preventDefault();
+        console.log("Entered");
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+
+        if (name.value.length >= 3 && password.value.length >= 8) {
+          alert("Form Validation Successfull !!");
+        } else {
+          alert("Form Validation Failed !!");
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!-- **************************Question-5********************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Image</title>
+  </head>
+  <body>
+    <h1 id="heading"></h1>
+    <button style="margin-bottom: 10px" onclick="toggleImage()">
+      Toggle Image
+    </button>
+    <div>
+      <img
+        src="https://learn.pwskills.com/_next/image?url=https%3A%2F%2Fcdn.pwskills.com%2Fassets%2Fuploads%2Fthumbnails%2F642152e5af09d60df056811a.png&w=1920&q=75"
+        alt="Course Image"
+        id="img"
+      />
+    </div>
+
+    <script>
+      const heading = document.getElementById("heading");
+      heading.innerText = "Your Image is visible.";
+      function toggleImage() {
+        const image = document.getElementById("img");
+        if (image.style.opacity == 0) {
+          image.style.opacity = 100;
+          heading.innerText = "Your Image is visible.";
+        } else {
+          image.style.opacity = 0;
+          heading.innerText = "Your Image is hidden.";
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!-- **************************Question-6********************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown</title>
+  </head>
+  <body>
+    <div class="container"></div>
+  </body>
+
+  <script>
+    const options = ["JavaScript", "Java", "Python", "C++"];
+
+    const container = document.querySelector(".container");
+
+    const heading = document.createElement("h3");
+    heading.innerText = "Which is favorite Programming Language : ";
+
+    const span = document.createElement("span");
+
+    const select = document.createElement("select");
+
+    options.map((data) => {
+      const option = document.createElement("option");
+      option.innerText = data;
+      option.value = data;
+
+      select.appendChild(option);
+    });
+
+    span.appendChild(select);
+
+    heading.appendChild(span);
+
+    container.appendChild(heading);
+  </script>
+</html>
+
+<!-- **************************Question-7********************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Filter</title>
+  </head>
+  <body>
+    <input type="text" id="filterInput" placeholder="Search for items" />
+    <h3>Results:</h3>
+    <ul id="itemList">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Tailwind CSS</li>
+      <li>GitHub</li>
+      <li>JavaScript</li>
+    </ul>
+
+    <script>
+      const filterInput = document.getElementById("filterInput");
+      const itemList = document
+        .getElementById("itemList")
+        .getElementsByTagName("li");
+
+      filterInput.addEventListener("input", function () {
+        const filterValue = filterInput.value.toLowerCase();
+
+        for (let i = 0; i < itemList.length; i++) {
+          const itemText = itemList[i].innerText.toLowerCase();
+          if (itemText.includes(filterValue)) {
+            itemList[i].style.display = "block";
+          } else {
+            itemList[i].style.display = "none";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<!-- **************************Question-8********************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000;
+        color: #fff;
+        font-size: 3rem;
+      }
+
+      .timer {
+        padding: 20px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="timer" id="timer">
+      <span id="hours">00</span> : <span id="minutes">00</span> :
+      <span id="seconds">00</span>
+    </div>
+
+    <script>
+      function updateTimer() {
+        const currentTime = new Date();
+        const hours = currentTime.getHours().toString().padStart(2, "0");
+        const minutes = currentTime.getMinutes().toString().padStart(2, "0");
+        const seconds = currentTime.getSeconds().toString().padStart(2, "0");
+        const hexCode = `#${hours}${minutes}${seconds}`;
+
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+
+        document.body.style.backgroundColor = hexCode;
+      }
+
+      setInterval(updateTimer, 1000);
+    </script>
+  </body>
+</html>
+
+<!-- **************************Question-9********************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session Storage</title>
+  </head>
+  <body>
+    <button onclick="login()">Login</button>
+    <button onclick="logout()">Logout</button>
+
+    <h1 id="login-status"></h1>
+
+    <script>
+      function login() {
+        localStorage.setItem("auth", true);
+        window.location.reload();
+      }
+
+      function logout() {
+        localStorage.setItem("auth", false);
+        window.location.reload();
+      }
+
+      const heading = document.getElementById("login-status");
+      const loginStatus = localStorage.getItem("auth");
+      if (loginStatus != "false") {
+        heading.innerHTML = "User is logged In";
+      } else {
+        heading.innerHTML = "User Has Not logged In";
+      }
+    </script>
+  </body>
+</html>
+
+
